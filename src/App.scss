@@ -35,7 +35,14 @@ mark {
   padding: 0 0.2em;
 }
 
-.search__container {
+.wikiList__container {
+  list-style-type: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.search__container,
+.wikiList__item {
   background: var(--color-background);
   padding: calc(4 * var(--size-bezel));
   margin-top: calc(4 * var(--size-bezel));
