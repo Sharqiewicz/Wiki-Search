@@ -14,12 +14,10 @@ const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children }
     const { setSearchedPhrase, searchedPhrase, setWikiList } = useContext(WikiContext);
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('event')
         if (setSearchedPhrase !== null && setWikiList !== null) {
             setSearchedPhrase(e.target.value);
             const response = await searchPhrase(e.target.value);
             setWikiList(response)
-            console.log('searching')
         }
     }
 

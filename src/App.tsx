@@ -9,6 +9,7 @@ function App() {
   const [replacePhrase, setReplacePhrase] = useState('');
   const [wikiList, setWikiList] = useState([]);
 
+  console.log(searchedPhrase, replacePhrase, wikiList)
   return (
     <div className="App">
       <header className="App-header">
