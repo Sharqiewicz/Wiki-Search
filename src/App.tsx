@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import Search from './components/Search'
 import { WikiContext } from './context/WikiContext'
+import WikipediaArticlesList from './components/WikipediaArticlesList';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
   const [replacePhrase, setReplacePhrase] = useState('');
   const [wikiList, setWikiList] = useState([]);
 
-  console.log(searchedPhrase, replacePhrase, wikiList)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -24,7 +25,7 @@ function App() {
             <button>Replace</button>
             <button>Replace All</button>
           </Search>
-          {wikiList.length ? <div>LIST<pre>{setWikiList}</pre></div> : null}
+          {wikiList.length && searchedPhrase ? <WikipediaArticlesList /> : null}
         </WikiContext.Provider>
       </main>
     </div >
