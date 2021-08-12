@@ -8,13 +8,14 @@ interface SearchProps {
     additionalStyles?: string;
     labelText: string;
     children?: React.ReactNode;
+    isSearchInput: boolean;
 }
 
-const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children }) => {
+const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children, isSearchInput }) => {
 
-    const { setSearchedPhrase, searchedPhrase, setWikiList } = useContext(WikiContext);
+    const { setWikiList, setSearchedPhrase, searchedPhrase, replacePhrase, setReplacePhrase } = useContext(WikiContext);
 
-    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (setSearchedPhrase !== null && setWikiList !== null) {
             setSearchedPhrase(e.target.value);
             const response = await searchPhrase(e.target.value);
@@ -22,10 +23,16 @@ const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children }
         }
     }
 
+    const handleReplaceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (setReplacePhrase !== null) {
+            setReplacePhrase(e.target.value);
+        }
+    }
+
     return (
         <div className={`search__container ${additionalStyles}`}>
             <label className="search__label">{labelText}</label>
-            <DebounceInput debounceTimeout={300} type="text" className="search__input" value={searchedPhrase} onChange={handleChange} />
+            <DebounceInput debounceTimeout={300} type="text" className="search__input" value={isSearchInput ? searchedPhrase : replacePhrase} onChange={isSearchInput ? handleSearchChange : handleReplaceChange} />
             <div className="button__group">
                 {children}
             </div>
