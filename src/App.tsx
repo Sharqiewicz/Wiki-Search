@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Search from './components/Search'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
-    </div>
+      <main>
+        <Search additionalStyles="search__container--accent" labelText="Search for a phrase">
+          <button>Send</button>
+          <button>Reset</button>
+        </Search>
+        <Search additionalStyles="search__container--inverted" labelText="Replace with text">
+          <button>Replace</button>
+          <button>Replace All</button>
+        </Search>
+      </main>
+    </div >
   );
 }
 
