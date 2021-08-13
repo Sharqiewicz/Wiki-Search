@@ -1,19 +1,23 @@
 import React, { useContext } from 'react';
-import { WikiContext } from '../context/WikiContext';
-import { searchPhrase } from '../services/api';
 import { DebounceInput } from 'react-debounce-input';
+
+import { searchPhrase } from '../services/api';
+
+import { WikiContext } from '../context/WikiContext';
+import { ReplaceContext } from '../context/ReplaceContext';
 
 
 interface SearchProps {
     additionalStyles?: string;
     labelText: string;
-    children?: React.ReactNode;
     isSearchInput: boolean;
+    children?: React.ReactNode;
 }
 
 const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children, isSearchInput }) => {
 
-    const { setWikiList, setSearchedPhrase, searchedPhrase, replacePhrase, setReplacePhrase, setIsReplaceActive, setIsLoading } = useContext(WikiContext);
+    const { setWikiList, setSearchedPhrase, searchedPhrase, setIsLoading } = useContext(WikiContext);
+    const { replacePhrase, setReplacePhrase, setIsReplaceActive } = useContext(ReplaceContext);
 
     const handleSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (setSearchedPhrase && setWikiList && setIsLoading) {
