@@ -22,5 +22,5 @@ export const ReplaceContext = createContext<IReplaceContext>({
     replacePhrase: '',
     isReplaceActive: false,
     isReplaceAll: false,
-    replaceIndex: 1,
+    replaceIndex: -1,
 });

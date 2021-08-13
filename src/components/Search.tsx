@@ -17,7 +17,7 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children, isSearchInput }) => {
 
     const { setWikiList, setSearchedPhrase, searchedPhrase, setIsLoading } = useContext(WikiContext);
-    const { replacePhrase, setReplacePhrase, setIsReplaceActive } = useContext(ReplaceContext);
+    const { replacePhrase, setReplacePhrase, setIsReplaceActive, setReplaceIndex } = useContext(ReplaceContext);
 
     const handleSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (setSearchedPhrase && setWikiList && setIsLoading) {
@@ -30,9 +30,10 @@ const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children, 
     }
 
     const handleReplaceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (setReplacePhrase && setIsReplaceActive) {
+        if (setReplacePhrase && setIsReplaceActive && setReplaceIndex) {
             setIsReplaceActive(false);
             setReplacePhrase(e.target.value);
+            setReplaceIndex(-1);
         }
     }
 

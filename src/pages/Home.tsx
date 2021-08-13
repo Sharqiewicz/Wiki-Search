@@ -11,7 +11,7 @@ import { ReplaceContext } from '../context/ReplaceContext';
 const Home = () => {
 
     const { setIsLoading, searchedPhrase, setWikiList, isLoading, wikiList } = useContext(WikiContext);
-    const { setIsReplaceActive, setIsReplaceAll } = useContext(ReplaceContext);
+    const { setIsReplaceActive, setIsReplaceAll, setReplaceIndex, replaceIndex } = useContext(ReplaceContext);
 
     const handleSearchClick = async () => {
         if (setIsLoading && setWikiList) {
@@ -23,8 +23,14 @@ const Home = () => {
     }
 
     const handleReplaceClick = () => {
-        if (setIsReplaceActive) {
+        if (setIsReplaceActive && setReplaceIndex) {
             setIsReplaceActive(true);
+            if (replaceIndex >= 10) {
+                setReplaceIndex(0);
+            }
+            else {
+                setReplaceIndex(state => state + 1)
+            }
         }
     }
     const handleReplaceAllClick = () => {
@@ -34,6 +40,7 @@ const Home = () => {
         }
     }
 
+    console.log('replaceIndex', replaceIndex)
     return (
         <>
             <Search additionalStyles="search__container--accent" labelText="Search for a phrase" isSearchInput={true}>

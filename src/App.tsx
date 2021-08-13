@@ -14,9 +14,7 @@ function App() {
   const [isReplaceActive, setIsReplaceActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isReplaceAll, setIsReplaceAll] = useState(false);
-  const [replaceIndex, setReplaceIndex] = useState(0);
-
-
+  const [replaceIndex, setReplaceIndex] = useState(-1);
 
   return (
     <div className="App">
