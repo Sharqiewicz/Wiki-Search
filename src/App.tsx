@@ -5,12 +5,13 @@ import { WikiContext } from './context/WikiContext'
 import { ReplaceContext } from './context/ReplaceContext'
 
 import Home from './pages/Home';
+import { IWikiArticle } from './types';
 
 function App() {
 
   const [searchedPhrase, setSearchedPhrase] = useState('');
   const [replacePhrase, setReplacePhrase] = useState('');
-  const [wikiList, setWikiList] = useState([]);
+  const [wikiList, setWikiList] = useState<IWikiArticle[] | []>([]);
   const [isReplaceActive, setIsReplaceActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isReplaceAll, setIsReplaceAll] = useState(false);

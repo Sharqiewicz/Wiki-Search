@@ -17,7 +17,9 @@ const Home = () => {
         if (setIsLoading && setWikiList) {
             setIsLoading(true);
             const response = await searchPhrase(searchedPhrase);
-            setWikiList(response);
+            if (response) {
+                setWikiList(response);
+            }
             setIsLoading(false);
         }
     }

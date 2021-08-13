@@ -24,7 +24,9 @@ const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children, 
             setIsLoading(true);
             setSearchedPhrase(e.target.value);
             const response = await searchPhrase(e.target.value);
-            setWikiList(response)
+            if (response) {
+                setWikiList(response)
+            }
             setIsLoading(false);
         }
     }

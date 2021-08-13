@@ -1,13 +1,14 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
+import { IWikiArticle } from '../types/index';
 
 
 interface IWikiContext {
-    wikiList: any[],
+    wikiList: IWikiArticle[],
     searchedPhrase: string,
     isLoading: boolean,
 
     setSearchedPhrase: Dispatch<SetStateAction<string>> | null
-    setWikiList: Dispatch<SetStateAction<any>> | null,
+    setWikiList: Dispatch<SetStateAction<IWikiArticle[]>> | null,
     setIsLoading: Dispatch<SetStateAction<boolean>> | null,
 }
 

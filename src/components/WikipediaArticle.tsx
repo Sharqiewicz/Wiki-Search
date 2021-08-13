@@ -1,20 +1,18 @@
 import React, { useContext } from 'react'
+import Highlighter from "react-highlight-words";
+
+import { removeHTMLFromString } from '../helpers/index'
+import { IWikiArticle } from '../types/index'
+
 import { WikiContext } from '../context/WikiContext';
 import { ReplaceContext } from '../context/ReplaceContext';
-import Highlighter from "react-highlight-words";
-import { removeHTMLFromString } from '../helpers/index'
 
-
-interface IWikiArticle {
-    article: {
-        title: string;
-        snippet: string;
-        id: string;
-    }
+interface IWikiArticleProps {
+    article: IWikiArticle;
     index: number;
 }
 
-const WikipediaArticle: React.FC<IWikiArticle> = ({ article, index }: IWikiArticle) => {
+const WikipediaArticle: React.FC<IWikiArticleProps> = ({ article, index }: IWikiArticleProps) => {
 
     const { searchedPhrase } = useContext(WikiContext);
     const { replacePhrase, isReplaceActive, isReplaceAll, replaceIndex } = useContext(ReplaceContext);
