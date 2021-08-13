@@ -4,7 +4,17 @@ import { ReplaceContext } from '../context/ReplaceContext';
 import Highlighter from "react-highlight-words";
 import { removeHTMLFromString } from '../helpers/index'
 
-export default function WikipediaArticle({ article, index }: any) {
+
+interface IWikiArticle {
+    article: {
+        title: string;
+        snippet: string;
+        id: string;
+    }
+    index: number;
+}
+
+const WikipediaArticle: React.FC<IWikiArticle> = ({ article, index }: IWikiArticle) => {
 
     const { searchedPhrase } = useContext(WikiContext);
     const { replacePhrase, isReplaceActive, isReplaceAll, replaceIndex } = useContext(ReplaceContext);
@@ -26,8 +36,7 @@ export default function WikipediaArticle({ article, index }: any) {
             if (isReplaceAll) {
                 return replaceAllWords(text);
             }
-            console.log(index, 'replaceIndex', replaceIndex);
-            if (index === replaceIndex) {
+            if (index <= replaceIndex) {
                 return replaceWord(text);
             }
         }
@@ -41,3 +50,5 @@ export default function WikipediaArticle({ article, index }: any) {
         </li>
     )
 }
+
+export default WikipediaArticle;
