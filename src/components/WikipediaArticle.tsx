@@ -8,10 +8,6 @@ export default function WikipediaArticle({ article }: any) {
     const { searchedPhrase, replacePhrase, isReplaceActive } = useContext(WikiContext);
     const searchedWords = isReplaceActive && replacePhrase.trim() ? [replacePhrase] : [searchedPhrase];
 
-    console.log(isReplaceActive, replacePhrase.trim());
-
-    console.log(article);
-
     const snippet = removeHTMLFromString(article.snippet)
     const title = removeHTMLFromString(article.title)
 

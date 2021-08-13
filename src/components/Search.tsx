@@ -13,18 +13,20 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = ({ additionalStyles, labelText, children, isSearchInput }) => {
 
-    const { setWikiList, setSearchedPhrase, searchedPhrase, replacePhrase, setReplacePhrase, setIsReplaceActive } = useContext(WikiContext);
+    const { setWikiList, setSearchedPhrase, searchedPhrase, replacePhrase, setReplacePhrase, setIsReplaceActive, setIsLoading } = useContext(WikiContext);
 
     const handleSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (setSearchedPhrase !== null && setWikiList !== null) {
+        if (setSearchedPhrase && setWikiList && setIsLoading) {
+            setIsLoading(true);
             setSearchedPhrase(e.target.value);
             const response = await searchPhrase(e.target.value);
             setWikiList(response)
+            setIsLoading(false);
         }
     }
 
     const handleReplaceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (setReplacePhrase !== null && setIsReplaceActive !== null) {
+        if (setReplacePhrase && setIsReplaceActive) {
             setIsReplaceActive(false);
             setReplacePhrase(e.target.value);
         }
