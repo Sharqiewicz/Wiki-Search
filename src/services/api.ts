@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const REQUEST_LIMIT = 10;
 const HOST: string = `https://en.wikipedia.org/w/api.php?action=query&list=search&origin=*&format=json`;
 

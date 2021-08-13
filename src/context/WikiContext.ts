@@ -7,7 +7,9 @@ interface IWikiContext {
     searchedPhrase: string,
     setSearchedPhrase: Dispatch<SetStateAction<string>> | null
     setReplacePhrase: Dispatch<SetStateAction<string>> | null
-    setWikiList: Dispatch<SetStateAction<any>> | null
+    setIsReplaceActive: Dispatch<SetStateAction<boolean>> | null
+    setWikiList: Dispatch<SetStateAction<any>> | null,
+    isReplaceActive: boolean
 }
 export const DEFAULT_WIKICONTEXT = { wikiList: [], replacePhrase: '', searchedPhrase: '' }
 export const WikiContext = createContext<IWikiContext>({
@@ -16,5 +18,7 @@ export const WikiContext = createContext<IWikiContext>({
     searchedPhrase: '',
     setSearchedPhrase: null,
     setReplacePhrase: null,
-    setWikiList: null
+    setWikiList: null,
+    setIsReplaceActive: null,
+    isReplaceActive: false
 });
