@@ -42,7 +42,7 @@ const WikipediaArticle: React.FC<IWikiArticleProps> = ({ article, index }: IWiki
     }
 
     return (
-        <li key={article.id} className="wikiList__item">
+        <li className="wikiList__item">
             <h3><Highlighter searchWords={searchedWords} textToHighlight={manageText(title)} /></h3>
             <h4><Highlighter searchWords={searchedWords} textToHighlight={manageText(snippet)} /></h4>
         </li>

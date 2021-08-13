@@ -9,7 +9,7 @@ export default function WikipediaArticlesList() {
     const { wikiList } = useContext(WikiContext);
     return (
         <ul className="wikiList__container">
-            {wikiList.map((article: IWikiArticle, index: number) => <WikipediaArticle article={article} index={index} />)}
+            {wikiList.map((article: IWikiArticle, index: number) => <WikipediaArticle article={article} index={index} key={article.pageid} />)}
         </ul>
     )
 }
