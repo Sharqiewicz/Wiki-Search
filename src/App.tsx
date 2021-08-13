@@ -10,10 +10,11 @@ import { IWikiArticle } from './types';
 function App() {
 
   const [searchedPhrase, setSearchedPhrase] = useState('');
-  const [replacePhrase, setReplacePhrase] = useState('');
   const [wikiList, setWikiList] = useState<IWikiArticle[] | []>([]);
-  const [isReplaceActive, setIsReplaceActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [replacePhrase, setReplacePhrase] = useState('');
+  const [isReplaceActive, setIsReplaceActive] = useState(false);
   const [isReplaceAll, setIsReplaceAll] = useState(false);
   const [replaceIndex, setReplaceIndex] = useState(-1);
 
