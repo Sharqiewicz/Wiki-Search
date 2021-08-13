@@ -23,9 +23,10 @@ const Home = () => {
     }
 
     const handleReplaceClick = () => {
-        if (setIsReplaceActive && setReplaceIndex) {
+        if (setIsReplaceActive && setReplaceIndex && setIsReplaceAll) {
+            setIsReplaceAll(false)
             setIsReplaceActive(true);
-            if (replaceIndex >= 10) {
+            if (replaceIndex >= 9) {
                 setReplaceIndex(0);
             }
             else {
@@ -34,13 +35,13 @@ const Home = () => {
         }
     }
     const handleReplaceAllClick = () => {
-        if (setIsReplaceActive && setIsReplaceAll) {
+        if (setIsReplaceActive && setIsReplaceAll && setReplaceIndex) {
             setIsReplaceActive(true);
             setIsReplaceAll(true);
+            setReplaceIndex(-1);
         }
     }
 
-    console.log('replaceIndex', replaceIndex)
     return (
         <>
             <Search additionalStyles="search__container--accent" labelText="Search for a phrase" isSearchInput={true}>
