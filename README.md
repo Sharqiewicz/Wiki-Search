@@ -28,6 +28,6 @@ I used Context API due to the fact that I have little time to complete the task,
 
 ## Technologies
 
-SASS - for styling
-react-highlight-words - to highlight searched words
-react-debounce-input - to make function wait until getting fired ( set the time between last function calls )
+- SASS - for styling
+- react-highlight-words - to highlight searched words
+- react-debounce-input - to make function wait until getting fired ( set the time between last function calls )
